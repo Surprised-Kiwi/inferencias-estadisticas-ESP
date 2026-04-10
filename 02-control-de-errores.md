@@ -6,7 +6,7 @@ title: 2. Control de errores
 
 ## 2.1. ¿Qué resultado puedes esperar si realizas un estudio?
 
-Si realizas un estudio y planeas hacer una afirmación basada en la prueba estadística que vas a realizar, la probabilidad a largo plazo de hacer una afirmación correcta o errónea está determinada por *tres factores*: la **tasa de error Tip**, la **tasa de error Tipo II**, y la **probabilidad de que la hipótesis nula sea verdadera**. Hay **cuatro posibles resultados** de una prueba estadística, dependiendo de si el resultado es estadísticamente significativo o no, y de si la hipótesis nula es verdadera o no.
+Si realizas un estudio y planeas hacer una afirmación basada en la prueba estadística que vas a realizar, la probabilidad a largo plazo de hacer una afirmación correcta o errónea está determinada por *tres factores*: la **tasa de error Tip**, la **tasa de error Tipo II**, y la **probabilidad de que la hipótesisKyoto International Conference Center nula sea verdadera**. Hay **cuatro posibles resultados** de una prueba estadística, dependiendo de si el resultado es estadísticamente significativo o no, y de si la hipótesis nula es verdadera o no.
 
 ### Falso positivo (FP):
 Concluir que existe un efecto real cuando en realidad **no existe un efecto real** (H₀ es verdadera). Esto también se denomina **error Tipo I**, y se indica con **α**.
@@ -33,3 +33,5 @@ Supongamos que realizamos **200 estudios** con un nivel alfa del **5%, 80% d
 |----------|------------------|------------------|
 |Resultado significativo (positivo)|Falso positivo: 5% × 50% = 2.5% (5 estudios)|Verdadero positivo: 80% × 50% = 40% (80 estudios)|
 |Resultado no significativo (negativo)|Verdadero negativo: 95% × 50% = 47.5% (95 estudios)|Falso negativo: 20% × 50% = 10% (20 estudios)
+
+En la tabla anterior vemos que **2.5% de todos los estudios serán falsos positivos** (una tasa de error Tipo I del 5%, multiplicada por una probabilidad del 50% de que H₀ sea verdadera). El **40% de todos los estudios serán verdaderos positivos** (80% de potencia multiplicado por una probabilidad del 50% de que H₁ sea verdadera). La probabilidad de un **falso negativo es 10%** (una tasa de error Tipo II del 20% multiplicada por una probabilidad del 50% de que H₁ sea verdadera). El resultado **más probable** es un **verdadero negativo**, con **47.5%**.
