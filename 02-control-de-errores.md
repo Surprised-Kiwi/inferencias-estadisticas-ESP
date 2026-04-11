@@ -66,3 +66,64 @@ Si continuamos el ejemplo anterior, vemos que hay 85 resultados positivos (80 + 
 (Nota: FDR y FPRP son abreviaturas diferentes para lo mismo.)*
 
 ![Figura 2.3](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true)
+
+La gente a menudo dice algo como: “Bueno, todos sabemos que 1 de cada 20 resultados en la literatura publicada son errores Tipo 1”. Deberías ser capaz de entender que esto no es cierto en la práctica, después de aprender sobre el valor predictivo positivo. Solo cuando en el 100% de los estudios que realizas la hipótesis nula es verdadera, y todos los estudios se publican, solo entonces 1 de cada 20 estudios, en el largo plazo, son falsos positivos (y el resto correctamente revela que no hay una diferencia estadísticamente significativa). También explica por qué la concepción errónea común sobre el p-valor “Si has observado un hallazgo significativo, la probabilidad de que hayas cometido un error Tipo 1 (un falso positivo) es 5%.” no es correcta, porque en la práctica la hipótesis nula no es verdadera en todas las pruebas que se realizan (a veces la hipótesis alternativa es verdadera). De manera importante, mientras haya sesgo de publicación (donde hallazgos con resultados deseados acaban en la literatura científica, y por ejemplo resultados no significativos no se comparten), entonces incluso si los investigadores usan un nivel alfa del 5%, es bastante razonable asumir que mucho más del 5% de los hallazgos significativos en la literatura publicada son falsos positivos. En la literatura científica, la probabilidad de falso positivo reportado puede ser bastante alta, y bajo circunstancias específicas, incluso podría ser tan alta que la mayoría de los hallazgos de investigación publicados sean falsos. Esto ocurrirá cuando los investigadores examinen sobre todo estudios donde 1) la hipótesis nula es verdadera, 2) con baja potencia, o 3) cuando la tasa de error Tipo 1 esté inflada debido a p-hacking u otros tipos de sesgo.
+
+## 2.3 Inflación del error Tipo 1
+
+*Figura 2.4: Cita del libro de 1830 de Babbage, “Reflections on the Decline of Science in England And on Some of Its Causes.”*
+
+![Figura 2.4](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-4.jpg?raw=true)
+
+Si realizas múltiples comparaciones, existe el riesgo de que la tasa de error Tipo 1 pueda inflarse. Cuando se planifican múltiples comparaciones, en algunos casos es posible controlar la tasa de error Tipo 1 reduciendo el nivel alfa para cada análisis individual. El enfoque más conocido para controlar comparaciones múltiples es la corrección de Bonferroni, donde el nivel alfa se divide por el número de pruebas que se realizan. Sin embargo, los investigadores también a menudo utilizan estrategias informales de análisis de datos que inflan la tasa de error Tipo 1. Babbage (1830) ya se quejaba de estas prácticas problemáticas en 1830, y dos siglos después, siguen siendo comunes. Barber (1976) ofrece una discusión en profundidad de una serie de enfoques, como mirar los datos para decidir qué hipótesis probar (a veces llamado “double dipping”); informar selectivamente solo aquellos análisis que confirman predicciones e ignorar resultados no significativos, recolectar muchas variables y realizar multitud de pruebas, o realizar análisis de subgrupos cuando el análisis planificado produce resultados no significativos; o tras una predicción no significativa, derivar una nueva hipótesis que esté apoyada por los datos y probar la hipótesis en los mismos datos de los que se derivó la hipótesis (a veces llamado HARKing, Hypothesizing After Results are Known (Kerr, 1998)). Muchos investigadores admiten haber usado prácticas que inflan las tasas de error (véase la sección sobre prácticas de investigación cuestionables en el Capítulo 15 sobre integridad de la investigación). Yo mismo he utilizado tales prácticas en el primer artículo científico que publiqué, antes de ser plenamente consciente de lo problemático que era esto; para un artículo que mis coautores y yo publicamos varios años después en el que reflexionamos sobre esto, véase Jostmann et al. (2016).
+
+Para algunos paradigmas, los investigadores tienen mucha flexibilidad en cómo computar la variable dependiente principal. Elson y colegas examinaron 130 publicaciones que usaban la Competitive Reaction Time Task, en la que los participantes seleccionan la duración y la intensidad de ráfagas de un ruido desagradable que se entregará a un competidor (Elson et al., 2014). La tarea se usa para medir “conducta agresiva” de una manera ética. Para computar la puntuación, los investigadores pueden usar la duración de una ráfaga de ruido, la intensidad, o una combinación de ambas, promediada sobre cualquier número de ensayos, con varias transformaciones posibles de los datos. Las 130 publicaciones examinadas informaron 157 estrategias diferentes de cuantificación en total, mostrando que la mayoría de los cálculos de la variable dependiente eran únicos, usados solo en un único artículo. Uno podría preguntarse por qué los mismos autores a veces usaron cómputos diferentes entre artículos. Una posible explicación es que usaron esta flexibilidad en el análisis de datos para encontrar resultados estadísticamente significativos.
+
+*Figura 2.5: Gráfico de publicaciones que usan CRTT (azul) y cuantificaciones únicas de la medida (rojo). Figura de FlexibleMeasures.com por Malte Elson.*
+
+![Figura 2.5](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-5.png?raw=true)
+
+## 2.4 Detención opcional (Optional stopping)
+
+*Figura 2.6: Captura de pantalla de un artículo científico que admite explícitamente haber utilizado optional stopping.*
+
+![Figura 2.6](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-6.png?raw=true)
+
+Una práctica que **infla la tasa de error Tipo 1* se conoce como **optional stopping**. En el optional stopping un investigador analiza repetidamente los datos, continúa la recogida de datos cuando el resultado de la prueba no es estadísticamente significativo, pero se detiene cuando se observa un efecto significativo. La cita de un artículo publicado en la Figura 2.6 es un ejemplo donde los investigadores informan de manera transparente que utilizaron optional stopping, pero más comúnmente las personas **no revelan el uso de optional stopping en sus secciones de métodos**. En los últimos años, muchos investigadores han aprendido que el optional stopping es problemático. Esto ha llevado a algunos a la idea general de que **nunca se deberían recoger datos, mirar si los resultados son significativos y detener la recogida de datos cuando el resultado es significativo o, si no lo es, continuar recogiendo datos**. Esa no es la conclusión correcta, y es un ejemplo de volverse demasiado inflexible. El enfoque correcto —recoger datos en bloques, lo que se denomina **análisis secuencial**— ha sido ampliamente desarrollado por estadísticos, y se utiliza en muchos ensayos médicos. Hablaremos de los análisis secuenciales en el **Capítulo 10**. La principal lección es que ciertas prácticas de investigación pueden **aumentar la flexibilidad y la eficiencia de los estudios** que realizas cuando se hacen correctamente, pero las mismas prácticas pueden **inflar la tasa de error Tipo 1** cuando se hacen incorrectamente. Intentemos, por tanto, comprender mejor **cuándo y cómo corremos el riesgo de inflar nuestra tasa de error Tipo 1 con optional stopping**, y cómo hacerlo correctamente utilizando análisis secuencial.
+
+Copia el código siguiente en **R** y ejecútalo. Este script simulará una recogida de datos en curso. Tras **10 participantes en cada condición**, se calcula un p-valor realizando una **prueba t independiente**, y esta prueba t se repite después de cada participante adicional que se recoja. Después, todos estos p-valores se representan gráficamente en función del tamaño de muestra creciente.
+
+    n <- 200 # total number of datapoints (per condition) after initial 10
+    d <- 0.0 # effect size d
+
+    p <- numeric(n) # store p-values
+    x <- numeric(n) # store x-values
+    y <- numeric(n) # store y-values
+
+    n <- n + 10 # add 10 to number of datapoints
+
+    for (i in 10:n) { # for each simulated participants after the first 10
+      x[i] <- rnorm(n = 1, mean = 0, sd = 1)
+      y[i] <- rnorm(n = 1, mean = d, sd = 1)
+      p[i] <- t.test(x[1:i], y[1:i], var.equal = TRUE)$p.value
+    }
+
+    p <- p[10:n] # Remove first 10 empty p-values
+
+    # Create the plot
+    par(bg = "#fffafa")
+    plot(0, col = "red", lty = 1, lwd = 3, ylim = c(0, 1), xlim = c(10, n), 
+         type = "l", xlab = "sample size", ylab = "p-value")
+    lines(p, lwd = 2)
+    abline(h = 0.05, col = "darkgrey", lty = 2, lwd = 2) # draw line at p = 0.05
+
+    min(p) # Return lowest p-value from all looks
+    cat("The lowest p-value was observed at sample size", which.min(p) + 10) 
+    cat("The p-value dropped below 0.05 for the first time at sample size:", 
+        ifelse(is.na(which(p < 0.05)[1] + 10), "NEVER", which(p < 0.05)[1] + 10))
+
+Por ejemplo, en la **Figura 2.7** ves el p-valor representado en el eje y (de 0 a 1) y el tamaño de muestra representado en el eje x (de 0 a 200). Para esta simulación, el tamaño del efecto verdadero era **d = 0**, lo que significa que **no hay efecto real**. Por tanto, solo podemos observar **verdaderos negativos o falsos positivos**. A medida que aumenta el tamaño de la muestra, el p-valor se mueve lentamente hacia arriba y hacia abajo (recuerda del **Capítulo 1 sobre p-valores** que cuando no hay efecto real, los p-valores están distribuidos uniformemente). En la **Figura 2.7** el p-valor cae por debajo de la línea gris (que indica un nivel alfa de 0.05) después de recoger **83 participantes** en cada condición, solo para volver después a valores de p mayores. A partir de esta figura queda claro que **cuantas más veces miramos los datos, y cuanto mayor es el tamaño total de la muestra, mayor es la probabilidad de que uno de los análisis produzca un p < α**. Si los recursos fueran infinitos, la tasa de error Tipo 1 sería **1**, y un investigador siempre podría encontrar un resultado significativo mediante optional stopping.
+
+*Figura 2.7: p-valores simulados para cada observación adicional cuando la hipótesis nula es verdadera.*
+
+![Figura 2.7](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-7.gif?raw=true)
