@@ -65,4 +65,4 @@ Si continuamos el ejemplo anterior, vemos que hay 85 resultados positivos (80 + 
 *Figura 2.3: Captura de pantalla de la salida de los resultados de la app Shiny de PPV de Michael Zehetleitner y Felix Schönbrodt.
 (Nota: FDR y FPRP son abreviaturas diferentes para lo mismo.)*
 
-![Imagen 1](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true)
+![Figura 2.3](https://github.com/Surprised-Kiwi/inferencias-estadisticas-ESP/blob/main/images/02/figura2-3.png?raw=true)
